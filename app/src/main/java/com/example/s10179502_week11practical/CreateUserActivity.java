@@ -1,10 +1,13 @@
 package com.example.s10179502_week11practical;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -37,7 +40,13 @@ public class CreateUserActivity extends AppCompatActivity {
         Pattern passPattern = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).*$");
         Matcher passMatcher = passPattern.matcher(txtPass);
 
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+
         if(userMatcher.matches() && passMatcher.matches()){
+            editor.putString("Username",txtUser);
+            editor.putString("Password",txtPass);
             Account a = new Account(txtUser,txtPass);
             db.addAccount(a);
             Toast tt = Toast.makeText(CreateUserActivity.this,"New User Created Successfully", Toast.LENGTH_LONG);
