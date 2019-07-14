@@ -1,6 +1,7 @@
 package com.example.s10179502_week11practical;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         tvNewUser.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     Intent in = new Intent(MainActivity.this, CreateUserActivity.class);
                     startActivity(in);
                     return true;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void onLogin(View v){
+    public void onLogin(View v) {
         EditText etUser = findViewById(R.id.etUsername);
         EditText etPass = findViewById(R.id.etPassword);
 
@@ -48,12 +49,15 @@ public class MainActivity extends AppCompatActivity {
         Pattern passPattern = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).*$");
         Matcher passMatcher = passPattern.matcher(txtPass);
 
-        if(userMatcher.matches() && passMatcher.matches()){
-            Toast tt = Toast.makeText(MainActivity.this,"Valid", Toast.LENGTH_LONG);
-            tt.show();
-        }
-        else{
-            Toast tt = Toast.makeText(MainActivity.this,"Invalid", Toast.LENGTH_LONG);
+        if (userMatcher.matches() && passMatcher.matches()) {
+            SharedPreferences sharedPref = getSharedPreferences("MY_GLOBAL_PREFS", MODE_PRIVATE);
+            String user = sharedPref.getString("Username", "");
+            String pass = sharedPref.getString("Password", "");
+            if (txtUser.equals(user) && txtPass.equals(pass)) {
+                Toast.makeText(MainActivity.this, "Valid", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast tt = Toast.makeText(MainActivity.this, "Invalid", Toast.LENGTH_LONG);
             tt.show();
         }
     }
