@@ -40,12 +40,11 @@ public class CreateUserActivity extends AppCompatActivity {
         Pattern passPattern = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).*$");
         Matcher passMatcher = passPattern.matcher(txtPass);
 
-
-
         if(userMatcher.matches() && passMatcher.matches()){
             SharedPreferences.Editor editor = getSharedPreferences("MY_GLOBAL_PREFS",MODE_PRIVATE).edit();
             editor.putString("Username",txtUser);
             editor.putString("Password",txtPass);
+            editor.apply();
             Account a = new Account(txtUser,txtPass);
             db.addAccount(a);
             Toast tt = Toast.makeText(CreateUserActivity.this,"New User Created Successfully", Toast.LENGTH_LONG);
