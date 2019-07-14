@@ -40,11 +40,10 @@ public class CreateUserActivity extends AppCompatActivity {
         Pattern passPattern = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9])(?=.*\\W).*$");
         Matcher passMatcher = passPattern.matcher(txtPass);
 
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
 
 
         if(userMatcher.matches() && passMatcher.matches()){
+            SharedPreferences.Editor editor = getSharedPreferences("MY_GLOBAL_PREFS",MODE_PRIVATE).edit();
             editor.putString("Username",txtUser);
             editor.putString("Password",txtPass);
             Account a = new Account(txtUser,txtPass);
