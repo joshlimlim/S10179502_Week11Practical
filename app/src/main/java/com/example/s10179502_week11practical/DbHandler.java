@@ -10,8 +10,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class DbHandler extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "user.db";
-    private static final String TABLE_NAME = "user_table";
+    private static final String DATABASE_NAME = "accounts.db";
+    private static final String TABLE_NAME = "accounts";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_USERNAME = "username";
     private static final String COLUMN_PASSWORD = "password";
@@ -67,12 +67,12 @@ public class DbHandler extends SQLiteOpenHelper {
 
     public boolean checkLogin(String username, String password, Context context) {
         String[] columns = {COLUMN_ID};
-        SQLiteDatabase database = getReadableDatabase();
+        SQLiteDatabase database = this.getReadableDatabase();
         String selection = COLUMN_USERNAME + " =?" + " AND " + COLUMN_PASSWORD + " =?";
         String[] selectionArgs = {username, password};
         Cursor result = database.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
 
-        Toast.makeText(context, result.getString(1), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, result.getString(1), Toast.LENGTH_SHORT).show();
 
         return result.getCount() > 0;
     }
