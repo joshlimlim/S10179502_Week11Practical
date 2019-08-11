@@ -44,8 +44,8 @@ public class CreateUserActivity extends AppCompatActivity {
             editor.putString("Username", txtUser);
             editor.putString("Password", txtPass);
             editor.apply();
-            //Account a = new Account(txtUser, txtPass);
-            db.createUser(txtUser,txtPass);
+            Account a = new Account(txtUser, txtPass);
+            db.addAccount(a);
             Toast tt = Toast.makeText(CreateUserActivity.this, "New User Created Successfully", Toast.LENGTH_LONG);
             tt.show();
         }

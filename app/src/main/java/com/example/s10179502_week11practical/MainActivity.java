@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
+    DbHandler db = new DbHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +49,19 @@ public class MainActivity extends AppCompatActivity {
         Matcher passMatcher = passPattern.matcher(txtPass);
 
         if (userMatcher.matches() && passMatcher.matches()) {
-            SharedPreferences sharedPref = getSharedPreferences("MY_GLOBAL_PREFS", MODE_PRIVATE);
+            /*SharedPreferences sharedPref = getSharedPreferences("MY_GLOBAL_PREFS", MODE_PRIVATE);
             String user = sharedPref.getString("Username", "");
             String pass = sharedPref.getString("Password", "");
-            if (txtUser.equals(user) && txtPass.equals(pass)) {
+            txtUser.equals(user) && txtPass.equals(pass)*/
+            if (db.checkLogin(txtUser,txtPass,this)) {
+                SharedPreferences.Editor editor = getSharedPreferences("MY_GLOBAL_PREFS",MODE_PRIVATE).edit();
+                editor.putString("Username",txtUser);
+                editor.putString("Password",txtPass);
+                editor.apply();
                 Toast.makeText(MainActivity.this, "Valid", Toast.LENGTH_LONG).show();
                 Intent in = new Intent(MainActivity.this,AccountsActivity.class);
-                in.putExtra("Username",user);
-                in.putExtra("Password",pass);
+                in.putExtra("Username",txtUser);
+                in.putExtra("Password",txtPass);
                 startActivity(in);
             }
         } else {
