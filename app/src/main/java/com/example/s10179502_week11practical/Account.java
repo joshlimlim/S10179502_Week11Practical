@@ -9,6 +9,9 @@ public class Account {
         password = pwd;
     }
 
+    public Account() {
+    }
+
     public String getUsername() {
         return username;
     }

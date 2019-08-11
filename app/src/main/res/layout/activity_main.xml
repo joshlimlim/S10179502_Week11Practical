@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etCreateUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -26,11 +26,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:text="Username"
-        app:layout_constraintBottom_toTopOf="@+id/etUsername"
-        app:layout_constraintStart_toStartOf="@+id/etUsername" />
+        app:layout_constraintBottom_toTopOf="@+id/etCreateUsername"
+        app:layout_constraintStart_toStartOf="@+id/etCreateUsername" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etCreatePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -43,14 +43,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tvPassword"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:text="Password"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
-        app:layout_constraintStart_toStartOf="@+id/etPassword" />
+        app:layout_constraintBottom_toTopOf="@+id/etCreatePassword"
+        app:layout_constraintStart_toStartOf="@+id/etCreatePassword" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -63,7 +63,7 @@
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etCreatePassword" />
 
     <TextView
         android:id="@+id/tvNewUser"

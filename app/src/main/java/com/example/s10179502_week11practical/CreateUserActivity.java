@@ -1,13 +1,11 @@
 package com.example.s10179502_week11practical;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -20,7 +18,7 @@ public class CreateUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
-        db = new DbHandler(this, null, null, 1);
+        db = new DbHandler(this);
     }
 
     public void onCancel(View v) {
@@ -29,8 +27,8 @@ public class CreateUserActivity extends AppCompatActivity {
     }
 
     public void onCreate(View v) {
-        EditText etUser = findViewById(R.id.etUsername);
-        EditText etPass = findViewById(R.id.etPassword);
+        EditText etUser = findViewById(R.id.etCreateUsername);
+        EditText etPass = findViewById(R.id.etCreatePassword);
 
         String txtUser = etUser.getText().toString();
         String txtPass = etPass.getText().toString();
@@ -46,8 +44,8 @@ public class CreateUserActivity extends AppCompatActivity {
             editor.putString("Username", txtUser);
             editor.putString("Password", txtPass);
             editor.apply();
-            Account a = new Account(txtUser, txtPass);
-            db.addAccount(a);
+            //Account a = new Account(txtUser, txtPass);
+            db.createUser(txtUser,txtPass);
             Toast tt = Toast.makeText(CreateUserActivity.this, "New User Created Successfully", Toast.LENGTH_LONG);
             tt.show();
         }

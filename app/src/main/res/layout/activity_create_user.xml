@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etCreateUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etCreatePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/etCreateUsername" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -40,18 +40,18 @@
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:text="User Name"
-        app:layout_constraintBottom_toTopOf="@+id/etUsername"
-        app:layout_constraintStart_toStartOf="@+id/etUsername" />
+        app:layout_constraintBottom_toTopOf="@+id/etCreateUsername"
+        app:layout_constraintStart_toStartOf="@+id/etCreateUsername" />
 
     <TextView
-        android:id="@+id/tvPassword"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:text="Password"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
-        app:layout_constraintStart_toStartOf="@+id/etPassword" />
+        app:layout_constraintBottom_toTopOf="@+id/etCreatePassword"
+        app:layout_constraintStart_toStartOf="@+id/etCreatePassword" />
 
     <Button
         android:id="@+id/btnCancel"
@@ -66,7 +66,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etCreatePassword" />
 
     <Button
         android:id="@+id/btnCreate"
@@ -80,5 +80,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnCancel"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etCreatePassword" />
 </android.support.constraint.ConstraintLayout>

@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLogin(View v) {
-        EditText etUser = findViewById(R.id.etUsername);
-        EditText etPass = findViewById(R.id.etPassword);
+        EditText etUser = findViewById(R.id.etCreateUsername);
+        EditText etPass = findViewById(R.id.etCreatePassword);
 
         String txtUser = etUser.getText().toString();
         String txtPass = etPass.getText().toString();
@@ -55,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
             String pass = sharedPref.getString("Password", "");
             if (txtUser.equals(user) && txtPass.equals(pass)) {
                 Toast.makeText(MainActivity.this, "Valid", Toast.LENGTH_LONG).show();
+                Intent in = new Intent(MainActivity.this,AccountsActivity.class);
+                in.putExtra("Username",user);
+                in.putExtra("Password",pass);
+                startActivity(in);
             }
         } else {
             Toast tt = Toast.makeText(MainActivity.this, "Invalid", Toast.LENGTH_LONG);
